@@ -1,0 +1,18 @@
+<?php
+
+class AccountsInterface { 
+
+	public function createAccount();
+
+	public function deleteAccount();
+	
+	public function updateAccount();
+	
+	public function getlAccountsList();
+}
+
+AccountsInterface::createAccount(){
+		require_once 'create_account.php';
+}
+
+?>
