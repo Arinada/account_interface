@@ -1,0 +1,53 @@
+<?php
+
+class DataBase{
+
+	private $connection;
+	private $servername = "localhost";
+	private	$database = "databasename";
+	private	$username = "username";
+	private	$password = "password";
+	
+	function __construct() {
+      openConnection();
+    }
+   
+    function __destruct() {
+       closeConnection;
+    }
+
+	private openConnection(){
+		$connection = mysqli_connect($servername, $username, $password, $database);
+		if (!$connection) {
+			die("Connection failed: " . mysqli_connect_error());
+		}
+	}	
+
+	private closeConnection(){
+		mysqli_close($connection);
+	}	
+	
+	public addUserInf($first_name, $last_name, $email, $company_name, $position, $phone1, $phone2, $phone3){
+		
+		if(!(isset($company_name)))
+			$company_name = ' ';
+		
+		if(!(isset($position)))
+			$position = ' ';
+		
+		if(!(isset($phone1)))
+			$phone1 = ' ';
+		
+		if(!(isset($phone2)))
+			$phone2 = ' ';
+		
+		if(!(isset($phone3)))
+			$phone3 = ' ';
+		
+		$query = 'INSERT INTO users() values("'.$first_name.'", "'.$last_name.'", "'.$company_name.'", "'.$position.'", '; //prepared query
+	}
+	
+	
+}
+
+?>
