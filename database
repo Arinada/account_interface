@@ -4,9 +4,9 @@ class DataBase{
 
 	private $connection;
 	private $servername = "localhost";
-	private	$database = "databasename";
-	private	$username = "username";
-	private	$password = "password";
+	private	$database = "clients";
+	private	$username = "root";
+	private	$password = "";
 	
 	function __construct() {
       openConnection();
@@ -46,7 +46,6 @@ class DataBase{
 		
 		$query = 'INSERT INTO users() values("'.$first_name.'", "'.$last_name.'", "'.$company_name.'", "'.$position.'", '; //prepared query
 	}
-	
 	
 }
 
