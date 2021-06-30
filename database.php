@@ -46,6 +46,7 @@ class DataBase{
 		if(isset($phone1)) 
 		{
 			$phone = $phone1;
+			echo $phone;
 			$statement2->bind_param("is", $user_id, $phone);
 			$statement2->execute();
 		}
@@ -53,14 +54,16 @@ class DataBase{
 		if(isset($phone2))
 		{
 			$phone = $phone2;
-			$statement2->bind_param("is", $user_id, $phone);
+			//echo $phone;
+			//echo $statement2->bind_param("is", $user_id, $phone);
 			$statement2->execute();
 		}
 		
 		if(isset($phone3))
 		{
 			$phone = $phone3;
-			$statement2->bind_param("is", $user_id, $phone);
+			//echo $phone;
+			//$statement2->bind_param("is", $user_id, $phone);
 			$statement2->execute();
 		}
 	}
