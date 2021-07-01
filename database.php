@@ -68,6 +68,8 @@ class DataBase{
 		$emailsList;
 		$query = 'SELECT id, email FROM users';
 		$result = mysqli_query($this->connection, $query);
+		if(!$result)
+			die('upadting error: '. mysql_error());
 		while($row = mysqli_fetch_assoc($result)) {
 			$emailsList[$row['id']] = $row['email'];
 		}
@@ -76,13 +78,60 @@ class DataBase{
 	
 	public function getUserInf($id){
 		$userInf;
+		
 		$query = 'SELECT * FROM users WHERE id='.$id;
 		$result = mysqli_query($this->connection, $query);
+		if(!$result)
+			die('upadting error: '. mysql_error());
 		$userInf = mysqli_fetch_assoc($result);
+		
+		$query = 'SELECT * FROM phone_numbers WHERE user_id='.$id;
+		$result = mysqli_query($this->connection, $query);
+		if(!$result)
+			die('upadting error: '. mysql_error());
+		$counter = 1;
+		while($row = mysqli_fetch_assoc($result)) {
+			$userInf['phone'.$counter] = $row['phone_number'];
+			$counter++;
+		}
+		
 		return $userInf;
 	}
 	
+	public function updateUserInf($userInf){
+		$query = 'UPDATE users SET first_name="'.$userInf['first_name'].'", last_name="'.$userInf['last_name'].'", email="'.$userInf['email'].'"'.;
+		$company_name = $userInf['company_name'];
+		$position = $userInf['position'];
+		if(!empty($company_name))
+			$query.', "'.$company_name.'"';
+		if(!empty($position))
+			$query.', "'.$position.'"';
+		$query.' WHERE id='.$userInf['id'];
+		
+		$result = mysqli_query($this->connection, $query);
+		if(!$result)
+			die('upadting error: '. mysql_error());
+
+		$phone1 = $userInf['phone1'];
+		$phone2 = $userInf['phone2'];
+		$phone3 = $userInf['phone3'];
+		$user_id = $userInf['id'];
+
+		if(!empty($phone1))
+			$this->updatePhone($phone1, $user_id);
+		if(!empty($phone2))
+			$this->updatePhone($phone2, $user_id);
+		if(!empty($phone3))
+			$this->updatePhone($phone3, $user_id);
+		
+	}
 	
+	private function updatePhone($phone, $user_id){
+		$query = 'UPDATE phone_numbers SET phone_number="'.$phone.'" WHERE user_id='.$id;
+		$result = mysqli_query($this->connection, $query);
+		if(!$result)
+			die('upadting error: '. mysql_error());
+	}
 }
 
 ?>
