@@ -132,6 +132,14 @@ class DataBase{
 		if(!$result)
 			die('upadting error: '. mysql_error());
 	}
+	
+	public function deleteUserInf($id){
+		$query = 'DELETE FROM users WHERE id='.$id;
+		$result = mysqli_query($this->connection, $query);
+		if(!$result)
+			die('upadting error: '. mysql_error());
+		//cascade deleting for phones 
+	}
 }
 
 ?>
