@@ -41,34 +41,38 @@ class DataBase{
 		
 		$user_id = $this->connection->insert_id;   
 		$statement2 = $this->connection->prepare('INSERT INTO phone_numbers(user_id, phone_number) VALUES(?, ?)');
+		$statement2->bind_param("is", $user_id, $phone);
 	
 
 		if(isset($phone1)) 
 		{
 			$phone = $phone1;
 			echo $phone;
-			$statement2->bind_param("is", $user_id, $phone);
 			$statement2->execute();
 		}
 		
 		if(isset($phone2))
 		{
 			$phone = $phone2;
-			//echo $phone;
-			//echo $statement2->bind_param("is", $user_id, $phone);
 			$statement2->execute();
 		}
 		
 		if(isset($phone3))
 		{
 			$phone = $phone3;
-			//echo $phone;
-			//$statement2->bind_param("is", $user_id, $phone);
 			$statement2->execute();
 		}
 	}
 	
-	
+	public function getEmailsList(){
+		$emailsList;
+		$query = 'SELECT id, email FROM users';
+		$result = mysqli_query($this->connection, $query);
+		while($row = mysqli_fetch_assoc($result)) {
+			$emailsList[$row['id']] = $row['email'];
+		}
+		return $emailsList;
+	}
 	
 	
 }
