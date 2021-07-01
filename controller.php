@@ -1,5 +1,7 @@
 <?php
 
+require_once 'accounts_interface.php';
+
 $first_name = $_GET['first_name'];
 $last_name = $_GET['last_name'];
 $email = $_GET['email'];
@@ -9,10 +11,15 @@ $phone1 = $_GET['phone1'];
 $phone2 = $_GET['phone2'];
 $phone3 = $_GET['phone3'];
 
-if( isset($first_name) && !(empty($first_name)) && isset($last_name) && !(empty($last_name)) && isset($email) && !(empty($email)))
+
+$acc_interface = new AccountsInterface();
+
+if (isset($_GET['accounts_list']))
 {
-	require_once 'accounts_interface.php';
-	$acc_interface = new AccountsInterface();
+	$acc_interface->showAccountsList();
+}
+else if(isset($first_name) && !(empty($first_name)) && isset($last_name) && !(empty($last_name)) && isset($email) && !(empty($email)))
+{
 	$acc_interface->createAccount($first_name, $last_name, $email, $company_name, $position, $phone1, $phone2, $phone3);
 }
 else
