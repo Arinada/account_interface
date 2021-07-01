@@ -74,6 +74,14 @@ class DataBase{
 		return $emailsList;
 	}
 	
+	public function getUserInf($id){
+		$userInf;
+		$query = 'SELECT * FROM users WHERE id='.$id;
+		$result = mysqli_query($this->connection, $query);
+		$userInf = mysqli_fetch_assoc($result);
+		return $userInf;
+	}
+	
 	
 }
 
