@@ -11,13 +11,25 @@ class AccountsInterface {
     }
 
 	public function createAccount($first_name, $last_name, $email, $company_name, $position, $phone1, $phone2, $phone3){
-		$bd->addUserInf($first_name, $last_name, $email, $company_name, $position, $phone1, $phone2, $phone3);
-		unset($bd);
+		$this->db->addUserInf($first_name, $last_name, $email, $company_name, $position, $phone1, $phone2, $phone3);
+		header('Location: main_page.php');
+		exit;
+		unset($this->db);
 	}
 
-	//public function deleteAccount();
+	public function deleteAccount($id){
+		$this->db->deleteUserInf($id);
+		header('Location: main_page.php');
+		exit;
+		unset($this->db);
+	}
 	
-//	public function updateAccount();
+	public function updateAccount($userInf){
+		$this->db->updateUserInf($userInf);
+		header('Location: main_page.php');
+		exit;
+		unset($this->db);
+	}
 	
 	public function showAccountsList(){
 		$emails = $this->db->getEmailsList();
@@ -30,7 +42,10 @@ class AccountsInterface {
 		}
 		echo '</tr>';
 		echo '</table>';
+		unset($this->bd);
 	}
+	
+	
 }
 
 ?>
