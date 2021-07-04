@@ -31,20 +31,9 @@ class AccountsInterface {
 		unset($this->db);
 	}
 	
-	public function showAccountsList(){
-		$emails = $this->db->getEmailsList();
-		//pagination
-		echo '<table border="1">';
-		foreach($emails as $id => $email) {
-			echo '<tr>';
-			echo '<td><a href="update_account_page.php?id='.$id.'">'.$email.'</href></td>';
-			echo '</tr>';
-		}
-		echo '</tr>';
-		echo '</table>';
-		unset($this->bd);
+	public function showAccountsList(){	
+		require_once 'accounts_list.php';
 	}
-	
 	
 }
 
