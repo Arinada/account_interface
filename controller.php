@@ -16,7 +16,7 @@ $acc_interface = new AccountsInterface();
 
 if (isset($_GET['accounts_list']))
 {
-	$acc_interface->showAccountsList();
+	$acc_interface->showAccountsList($_GET['page']);
 }
 else if (isset($_GET['update']) && (isset($first_name) && !(empty($first_name)) && isset($last_name) && !(empty($last_name)) && isset($email) && !(empty($email))))
 {
