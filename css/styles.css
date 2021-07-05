@@ -1,0 +1,52 @@
+input {
+	font-family: arial;
+	font-style: normal;
+	margin-bottom: 5px;
+	height: 20px;
+	width: 400px;
+	font-size: 12pt;
+}
+
+p {
+	font-family: arial;
+	font-style: normal;
+	font-weight: bold;
+	margin-bottom: 2px;
+	font-size: 12pt;
+}
+
+body {
+	margin-left: 15px;
+}
+
+table {
+	width: 100%;
+	border: 1px solid #dddddd;
+	border-collapse: collapse; 
+	text-align: left;
+	vertical-align:middle;
+}
+
+table tr {
+	background: #faf8f4;
+	padding: 5px;
+}
+
+table td {
+	border: 1px solid #dddddd;
+	padding: 10px;
+}
+
+.header {
+	font-weight: bold;
+	margin-bottom: 10px;
+	
+}
+
+.button {
+	margin-left: 100px;
+	margin-top: 10px;
+	height: 25px;
+	width: 200px;
+	font-size: 10pt;
+}

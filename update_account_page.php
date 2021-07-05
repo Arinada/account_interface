@@ -6,7 +6,8 @@
 	$db = new DataBase();
 	$userInf = $db->getUserInf($id);
 	renderForm($userInf);
-	echo '<p><input name="update" type="submit" value=" Изменить аккаунт ">';
-	echo '<p><input name="delete" type="submit" value=" Удалить аккаунт "></p></form></body></html>';
+	echo '</br><input class="button" name="update" type="submit" value=" Изменить аккаунт ">';
+	echo '<link rel="stylesheet" href="css/styles.css" type="text/css" />';
+	echo '</br><input class="button" name="delete" type="submit" value=" Удалить аккаунт "></form></body></html>';
 	
 ?>
