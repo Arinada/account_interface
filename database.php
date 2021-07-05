@@ -124,7 +124,6 @@ class DataBase{
 	}
 	
 	private function addPhone($user_id, $phone){
-		//echo $user_id."  ".$phone;
 		$statement = $this->connection->prepare('INSERT INTO phone_numbers(user_id, phone_number) VALUES(?, ?)'); 
 		$statement->bind_param("is", $user_id, $phone);
 		$statement->execute();
@@ -140,7 +139,6 @@ class DataBase{
 	
 	private function deleteUserPhones($user_id){
 		$query = 'DELETE FROM phone_numbers WHERE user_id='.$user_id;
-		//echo $query;
 		$result = mysqli_query($this->connection, $query);
 		if(!$result)
 			die('deleting error: '. mysql_error());
